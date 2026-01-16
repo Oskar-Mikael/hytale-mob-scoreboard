@@ -60,7 +60,6 @@ public class KillScoreboard {
     public void saveData() {
         try (Writer writer = new FileWriter(dataFile.toFile())) {
             GSON.toJson(killStats, writer);
-            LOGGER.info("Kill stats saved successfully");
         } catch (IOException e) {
             LOGGER.severe("Failed to save kill stats: " + e.getMessage());
             e.printStackTrace();
