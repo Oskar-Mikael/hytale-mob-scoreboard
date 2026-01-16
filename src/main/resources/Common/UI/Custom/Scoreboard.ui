@@ -1,0 +1,40 @@
+$Common = "Common.ui";
+
+@MyTex = PatchStyle(TexturePath: "Container.png");
+
+Group {
+  LayoutMode: Center;
+
+  Group #MyPanel {
+    Background: @MyTex;
+    Anchor: (Width: 800, Height: 1000);
+    LayoutMode: Top;
+
+    Label #MyLabel {
+      Style: (FontSize: 32, Alignment: Center);
+      Anchor: (Top: 50);
+      Text: "MyText";
+      Padding: (Full: 10);
+    }
+
+    Group #MyScrollView {
+      Anchor: (Top: 120, Width: 700, Height: 650);
+
+      Group #ListContainer {
+        LayoutMode: Top;
+
+        Group #IndexList {
+          Anchor: (Width: 580);
+          FlexWeight: 1;
+          LayoutMode: TopScrolling;
+          Padding: (Left: 4);
+          ScrollbarStyle: $Common.@DefaultScrollbarStyle;
+
+          Group #IndexCards {
+            LayoutMode: Top;
+          }
+        }
+      }
+    }
+  }
+}

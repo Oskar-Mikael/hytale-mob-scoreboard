@@ -1,6 +1,5 @@
 package com.example.bjorkntale;
 
-import com.example.bjorkntale.commands.HomeCommand;
 import com.example.bjorkntale.commands.ScoreboardCommand;
 import com.example.bjorkntale.events.KillTracker;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
@@ -37,7 +36,6 @@ public class BjorkNTale extends JavaPlugin {
     @Override
     protected void setup() {
         super.setup();
-        this.getCommandRegistry().registerCommand(new HomeCommand());
         this.getCommandRegistry().registerCommand(new ScoreboardCommand(this.scoreboard));
         this.getEntityStoreRegistry().registerSystem(new KillTracker(this.scoreboard));
     }

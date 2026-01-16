@@ -6,6 +6,8 @@ build/
 !**/src/test/**/build/
 .kotlin/
 
+libs/*
+
 # Server testing directory
 run/
 
