@@ -1,32 +1,25 @@
-package com.example.bjorkntale.ui;
+package com.oskarmikael.mobkilltracker.ui;
 
-import com.example.bjorkntale.KillScoreboard;
+import com.oskarmikael.mobkilltracker.KillScoreboard;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
-import com.hypixel.hytale.protocol.packets.interface_.CustomPage;
 import com.hypixel.hytale.protocol.packets.interface_.CustomPageLifetime;
-import com.hypixel.hytale.protocol.packets.interface_.CustomUICommand;
 import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.entity.entities.player.pages.CustomUIPage;
 import com.hypixel.hytale.server.core.ui.builder.UICommandBuilder;
 import com.hypixel.hytale.server.core.ui.builder.UIEventBuilder;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
+import com.oskarmikael.mobkilltracker.MobKillTracker;
 import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nonnull;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class ScoreboardPage extends CustomUIPage {
 
-    private final KillScoreboard scoreboard;
-
-    public ScoreboardPage(@NotNull PlayerRef playerRef, @NotNull CustomPageLifetime lifetime, @NotNull KillScoreboard scoreboard) {
+    public ScoreboardPage(@NotNull PlayerRef playerRef, @NotNull CustomPageLifetime lifetime) {
         super(playerRef, lifetime);
-        this.scoreboard = scoreboard;
     }
 
     @Override
@@ -35,6 +28,7 @@ public class ScoreboardPage extends CustomUIPage {
         uiCommandBuilder.set("#MyLabel.TextSpans", Message.raw("Mob Kills Scoreboard"));
 
         // Get player's kill stats
+        KillScoreboard scoreboard = MobKillTracker.getInstance().getScoreboard();
         Map<String, Integer> kills = scoreboard.getPlayerKills(playerRef.getUuid().toString());
 
         // Sort by kill count (descending)

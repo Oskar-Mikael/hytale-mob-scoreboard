@@ -1,1 +1,1 @@
-rootProject.name = "BjorkNTale"
+rootProject.name = "MobKillTracker"

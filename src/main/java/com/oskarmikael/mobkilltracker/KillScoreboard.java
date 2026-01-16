@@ -1,4 +1,4 @@
-package com.example.bjorkntale;
+package com.oskarmikael.mobkilltracker;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

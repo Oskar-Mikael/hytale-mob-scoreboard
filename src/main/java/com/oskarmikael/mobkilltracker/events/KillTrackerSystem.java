@@ -1,6 +1,6 @@
-package com.example.bjorkntale.events;
+package com.oskarmikael.mobkilltracker.events;
 
-import com.example.bjorkntale.KillScoreboard;
+import com.oskarmikael.mobkilltracker.KillScoreboard;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.component.CommandBuffer;
@@ -15,18 +15,11 @@ import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import com.hypixel.hytale.component.Archetype;
 import com.hypixel.hytale.component.query.Query;
+import com.oskarmikael.mobkilltracker.MobKillTracker;
 
 import javax.annotation.Nonnull;
 
-public class KillTracker extends DeathSystems.OnDeathSystem {
-
-    private final KillScoreboard scoreboard;
-
-
-    public KillTracker(KillScoreboard scoreboard) {
-        this.scoreboard = scoreboard;
-    }
-
+public class KillTrackerSystem extends DeathSystems.OnDeathSystem {
     @Nonnull
     @Override
     public Query<EntityStore> getQuery() {
@@ -47,8 +40,7 @@ public class KillTracker extends DeathSystems.OnDeathSystem {
 
         // Check if killed by a player
         Damage.Source source = deathInfo.getSource();
-        if (source instanceof Damage.EntitySource) {
-            Damage.EntitySource entitySource = (Damage.EntitySource) source;
+        if (source instanceof Damage.EntitySource entitySource) {
             Ref<EntityStore> killerRef = entitySource.getRef();
 
             if (!killerRef.isValid()) {
@@ -60,11 +52,12 @@ public class KillTracker extends DeathSystems.OnDeathSystem {
                 PlayerRef playerRef = store.getComponent(killerRef, PlayerRef.getComponentType());
                 // Get entity type from victim
                 String entityType = getEntityType(ref, store);
+                assert playerRef != null;
                 String playerUuid = playerRef.getUuid().toString();
 
+                KillScoreboard scoreboard = MobKillTracker.getInstance().getScoreboard();
                 scoreboard.incrementKill(playerUuid, entityType);
 
-                // Optional: Send message to player
                 int totalKills = scoreboard.getKillCount(playerUuid, entityType);
 
                 if (totalKills % 10 == 0) {
@@ -81,7 +74,7 @@ public class KillTracker extends DeathSystems.OnDeathSystem {
         if (modelComponent != null) {
             Model model = modelComponent.getModel();
             if (model != null) {
-                return model.getModelAssetId(); // or model.getName() depending on what's available
+                return model.getModelAssetId();
             }
         }
 

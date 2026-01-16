@@ -1,17 +1,14 @@
 {
-  "Group": "BjorkNTale",
-  "Name": "BjorkNTale",
-  "Version": "1.0.0",
-  "Description": "A Hytale plugin template",
+  "Group": "KillTracker",
+  "Name": "KillTracker",
+  "Version": "0.1.0",
+  "Description": "A Hytale plugin for tracking mob kills",
   "Authors": [
     {
-      "Name": "YourName",
-      "Email": "your.email@example.com",
-      "Url": "https://your-website.com"
+      "Name": "Oskar Mikael"
     }
   ],
-  "Website": "https://github.com/yourusername/hytale-plugin-template",
-  "Main": "com.example.bjorkntale.BjorkNTale",
+  "Main": "com.oskarmikael.killtracker.KillTracker",
   "ServerVersion": "*",
   "Dependencies": {},
   "OptionalDependencies": {},
