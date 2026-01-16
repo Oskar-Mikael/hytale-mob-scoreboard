@@ -24,7 +24,7 @@ public class MobKillTracker extends JavaPlugin {
     public MobKillTracker(@NotNull JavaPluginInit init) {
         super(init);
 
-        Path dataDirectory = Paths.get("mods", "KillTracker");
+        Path dataDirectory = Paths.get("mods", "MobKillTracker");
         this.scoreboard = new KillScoreboard(dataDirectory);
     }
 
