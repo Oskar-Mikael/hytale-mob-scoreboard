@@ -1,37 +1,67 @@
 $Common = "Common.ui";
 
-@MyTex = PatchStyle(TexturePath: "Container.png");
 
-Group {
-  LayoutMode: Center;
+$Common.@PageOverlay {
 
-  Group #MyPanel {
-    Background: @MyTex;
-    Anchor: (Width: 800, Height: 1000);
-    LayoutMode: Top;
+  $Common.@DecoratedContainer {
+    Anchor: (Width: 1050, Height: 700);
 
-    Label #MyLabel {
-      Style: (FontSize: 32, Alignment: Center);
-      Anchor: (Top: 50);
-      Text: "MyText";
-      Padding: (Full: 10);
+    #Title {
+      Group {
+        $Common.@Title {
+          @Text = "Mob Kills Scoreboard";
+        }
+      }
     }
+    Group {
+      LayoutMode: Center;
 
-    Group #MyScrollView {
-      Anchor: (Top: 120, Width: 700, Height: 650);
-
-      Group #ListContainer {
+      Group #MyPanel {
         LayoutMode: Top;
+        Anchor: (Width: 800, Height: 650);
 
-        Group #IndexList {
-          Anchor: (Width: 580);
-          FlexWeight: 1;
-          LayoutMode: TopScrolling;
-          Padding: (Left: 4);
-          ScrollbarStyle: $Common.@DefaultScrollbarStyle;
+        Label #PlayerLabel {
+          Style: (FontSize: 16, Alignment: Center);
+          Anchor: (Top: 2);
+          Text: "";
+          Padding: (Full: 15);
+        }
 
-          Group #IndexCards {
+        Label #SortLabel {
+          Style: (FontSize: 16, Alignment: Center);
+          Anchor: (Top: 4);
+          Text: "MyText";
+          Padding: (Full: 10);
+        }
+
+        $Common.@TextButton #SortCount {
+          Anchor: (Right: 10, Vertical: 0);
+          Padding: (Left: 8, Right: 8, Top: 4, Bottom: 4);
+          Text: "";
+        }
+        $Common.@TextButton #SortName {
+          Anchor: (Right: 10, Vertical: 10);
+          Padding: (Left: 8, Right: 8, Top: 4, Bottom: 4);
+          Text: "";
+        }
+
+        Group #MyScrollView {
+          Anchor: (Top: 40, Width: 700, Height: 450);
+
+          Group #ListContainer {
             LayoutMode: Top;
+
+            Group #IndexList {
+              Anchor: (Width: 580);
+              FlexWeight: 1;
+              LayoutMode: TopScrolling;
+              Padding: (Left: 4);
+              ScrollbarStyle: $Common.@DefaultScrollbarStyle;
+
+              Group #IndexCards {
+                LayoutMode: Top;
+              }
+            }
           }
         }
       }
