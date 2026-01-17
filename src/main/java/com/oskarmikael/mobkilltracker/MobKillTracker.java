@@ -13,7 +13,7 @@ import java.nio.file.Paths;
  * Main plugin class.
  *
  * @author Oskar-Mikael
- * @version 0.1.0
+ * @version 0.1.1
  */
 public class MobKillTracker extends JavaPlugin {
 
