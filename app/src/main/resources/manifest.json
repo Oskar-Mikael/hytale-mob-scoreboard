@@ -1,0 +1,17 @@
+{
+  "Group": "MobKillTracker",
+  "Name": "MobKillTracker",
+  "Version": "1.0.0",
+  "Description": "A Hytale plugin for tracking mob kills",
+  "Authors": [
+    {
+      "Name": "Oskar Mikael"
+    }
+  ],
+  "Main": "com.oskarmikael.mobkilltracker.MobKillTracker",
+  "ServerVersion": "*",
+  "Dependencies": {},
+  "OptionalDependencies": {},
+  "DisabledByDefault": false,
+  "IncludesAssetPack": true
+}
